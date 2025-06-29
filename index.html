@@ -52,15 +52,16 @@
       background: darkred;
     }
   </style>
-  <!-- DO NOT MODIFY -->
-<!-- Quora Pixel Code (JS Helper) -->
-<script>
-!function(q,e,v,n,t,s){if(q.qp) return; n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments);}; n.queue=[];t=document.createElement(e);t.async=!0;t.src=v; s=document.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);}(window, 'script', 'https://a.quora.com/qevents.js');
-qp('init', '73e9ecf7064f47cea8aa2f0de7de0c34');
-qp('track', 'ViewContent');
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://q.quora.com/_/ad/73e9ecf7064f47cea8aa2f0de7de0c34/pixel?tag=ViewContent&noscript=1"/></noscript>
-<!-- End of Quora Pixel Code -->
+
+  <!-- Quora Pixel Code -->
+  <script>
+  !function(q,e,v,n,t,s){if(q.qp) return; n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments);}; n.queue=[];t=document.createElement(e);t.async=!0;t.src=v; s=document.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);}(window, 'script', 'https://a.quora.com/qevents.js');
+  qp('init', '73e9ecf7064f47cea8aa2f0de7de0c34');
+  qp('track', 'ViewContent');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://q.quora.com/_/ad/73e9ecf7064f47cea8aa2f0de7de0c34/pixel?tag=ViewContent&noscript=1"/></noscript>
+  <!-- End of Quora Pixel Code -->
+
 </head>
 <body>
 
@@ -69,7 +70,12 @@ qp('track', 'ViewContent');
   <div class="content">
     <h1>Are You 18 or Older?</h1>
     <p>This website contains adult material. Please confirm your age to proceed.</p>
-    <button class="btn" onclick="window.location.href='https://ceremonyjogglecling.com/jmc60semv?key=d8e44b007f5a4fc5f2e96321aa7bf42c'">YES, ENTER</button>
+    
+    <!-- Button with Quora Pixel click tracking + redirect -->
+    <button class="btn" onclick="qp('track', 'Generic'); window.location.href='https://ceremonyjogglecling.com/jmc60semv?key=d8e44b007f5a4fc5f2e96321aa7bf42c';">
+      YES, ENTER
+    </button>
+    
   </div>
 
 </body>
