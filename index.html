@@ -2,81 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Adult Access</title>
+  <title>Age Verification</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: Arial, sans-serif;
-      overflow: hidden;
-      color: #fff;
-    }
-    .background {
-      background: url('Background.jpg') no-repeat center center;
-      background-size: cover;
-      filter: blur(5px) brightness(0.4);
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-    .content {
-      position: relative;
-      height: 100%;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      height: 100vh;
       text-align: center;
+      background-color: #121212;
+      color: #fff;
     }
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 2.5em;
     }
     p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.2em;
+      margin-bottom: 30px;
     }
     .btn {
       padding: 15px 30px;
-      font-size: 1.5rem;
-      background: red;
-      border: none;
+      font-size: 1.2em;
+      background: #e91e63;
       color: white;
+      border: none;
       border-radius: 10px;
       cursor: pointer;
     }
     .btn:hover {
-      background: darkred;
+      background: #c2185b;
     }
   </style>
 
-  <!-- Quora Pixel Code -->
+  <!-- Quora Pixel -->
   <script>
-  !function(q,e,v,n,t,s){if(q.qp) return; n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments);}; n.queue=[];t=document.createElement(e);t.async=!0;t.src=v; s=document.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);}(window, 'script', 'https://a.quora.com/qevents.js');
-  qp('init', '73e9ecf7064f47cea8aa2f0de7de0c34');
-  qp('track', 'ViewContent');
+    !function(q,e,v,n,t,s){
+      if(q.qp)return;
+      n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments)};
+      n.queue=[];
+      t=document.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=document.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    }(window,'script','https://a.quora.com/qevents.js');
+    qp('init','73e9ecf7064f47cea8aa2f0de7de0c34');
+    qp('track','ViewContent');
   </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://q.quora.com/_/ad/73e9ecf7064f47cea8aa2f0de7de0c34/pixel?tag=ViewContent&noscript=1"/></noscript>
-  <!-- End of Quora Pixel Code -->
-
 </head>
 <body>
-
-  <div class="background"></div>
-
-  <div class="content">
-    <h1>Are You 18 or Older?</h1>
-    <p>This website contains adult material. Please confirm your age to proceed.</p>
-    
-    <!-- Button with Quora Pixel click tracking + redirect -->
-    <button class="btn" onclick="qp('track', 'Generic'); window.location.href='https://ceremonyjogglecling.com/jmc60semv?key=d8e44b007f5a4fc5f2e96321aa7bf42c';">
-      YES, ENTER
-    </button>
-    
-  </div>
-
+  <h1>Are you 18 or older?</h1>
+  <p>Click the button below to continue.</p>
+  <button class="btn" onclick="qp('track', 'Generic'); window.location.href='https://juicyfeeel.blogspot.com';">YES, ENTER</button>
 </body>
 </html>
