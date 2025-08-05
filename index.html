@@ -116,6 +116,18 @@
             50% { transform: scale(1.1); opacity: 0.2; }
             100% { transform: scale(0.9); opacity: 0.5; }
         }
+
+        #browserLink {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ff0000;
+            text-decoration: underline;
+        }
+
+        #browserLink:hover {
+            color: #ff3333;
+        }
     </style>
 </head>
 <body>
@@ -131,17 +143,17 @@
         <div class="options">
             <div class="option-btn no-btn" onclick="redirectNo()">No</div>
             <div class="option-btn yes-btn" onclick="redirectYes()">Yes</div>
-            <a id="browserLink" style="display:none;" href="intent://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b;end">Open in Browser</a>
+            <a id="browserLink" href="intent://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;S.browser_fallback_url=https://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b;end">Open in Browser</a>
         </div>
     </div>
 
     <script>
         function redirectYes() {
             if (/FBAN|FBAV/i.test(navigator.userAgent)) {
-                window.location.href = "intent://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b;end";
+                window.location.href = "intent://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;S.browser_fallback_url=https://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b;end";
                 setTimeout(() => {
                     document.getElementById("browserLink").style.display = "block";
-                    alert("Click 'Open in Browser' to use an external app.");
+                    alert("If the page doesn't open in your browser, click 'Open in Browser' to select an external app.");
                 }, 500);
             } else {
                 window.location.href = "https://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b";
@@ -150,10 +162,10 @@
 
         function redirectNo() {
             if (/FBAN|FBAV/i.test(navigator.userAgent)) {
-                window.location.href = "intent://www.google.com#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https://www.google.com;end";
+                window.location.href = "intent://www.google.com#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;S.browser_fallback_url=https://www.google.com;end";
                 setTimeout(() => {
                     document.getElementById("browserLink").style.display = "block";
-                    alert("Click 'Open in Browser' to use an external app.");
+                    alert("If the page doesn't open in your browser, click 'Open in Browser' to select an external app.");
                 }, 500);
             } else {
                 window.location.href = "https://www.google.com";
@@ -161,4 +173,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
