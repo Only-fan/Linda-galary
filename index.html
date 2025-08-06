@@ -20,30 +20,44 @@
             display: none;
             margin-top: 20px;
         }
+        #debug {
+            color: #333;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Redirecting to the website...</h1>
     <p>If you’re not redirected, use the link below:</p>
-    <a id="manualLink" href="https://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b">Open in Browser</a>
+    <a id="manualLink" href="https://inanebinding.com/twv7tsqg?key=a7a66851ce289174f103a497c2025210">Open in Browser</a>
+    <p id="debug"></p>
 
     <script>
         // Your target website URL
-        const targetUrl = "https://www.profitableratecpm.com/dvaw0sfsx?key=abe25b4c33c7c9d0c497c6415d52871b";
+        const targetUrl = "https://inanebinding.com/twv7tsqg?key=a7a66851ce289174f103a497c2025210";
+
+        // Debug: Confirm page load
+        console.log("Page loaded at " + new Date().toLocaleString());
+        document.getElementById("debug").innerText = "Page loaded. Checking browser...";
 
         // Detect if in Facebook in-app browser
         if (/FBAN|FBAV/i.test(navigator.userAgent)) {
-            // Attempt to open in Chrome using intent
-            const intentUrl = `intent://${targetUrl.replace('https://', '')}#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(targetUrl)};end`;
+            document.getElementById("debug").innerText += " (Facebook detected)";
+            // Attempt to open in standalone browser using intent
+            const intentUrl = `intent://${targetUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(targetUrl)};end`;
             window.location.href = intentUrl;
 
             // Show manual link if intent fails
             setTimeout(() => {
-                document.getElementById("manualLink").style.display = "block";
-                alert("If the page didn’t open in your browser, click 'Open in Browser' below.");
+                if (window.location.href.includes("intent")) {
+                    document.getElementById("manualLink").style.display = "block";
+                    alert("Redirect failed. Click 'Open in Browser' to open in your standalone browser.");
+                    document.getElementById("debug").innerText += " | Intent failed, showing manual link.";
+                }
             }, 1000);
         } else {
-            // If not in Facebook, redirect directly
+            document.getElementById("debug").innerText += " (Not Facebook, redirecting directly)";
             window.location.href = targetUrl;
         }
     </script>
