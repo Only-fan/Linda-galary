@@ -3,136 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adult Content Verification</title>
-    <meta name="robots" content="noindex, nofollow">
+    <title>Redirecting...</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #000000, #222222);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            overflow: hidden;
-        }
-
-        .container {
+            font-family: Arial, sans-serif;
             text-align: center;
-            max-width: 800px;
             padding: 20px;
-            position: relative;
-            z-index: 2;
+            background-color: #f0f0f0;
         }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        a {
+            color: #ff0000;
+            text-decoration: underline;
+            font-size: 1.2rem;
         }
-
-        .disclaimer {
-            font-size: 1rem;
-            margin-bottom: 3rem;
-            opacity: 0.8;
+        #manualLink {
+            display: none;
+            margin-top: 20px;
         }
-
-        .options {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .option-btn {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .no-btn {
-            background: white;
-            color: black;
-            border: 3px solid #ccc;
-        }
-
-        .yes-btn {
-            background: black;
-            color: white;
-            border: 3px solid #ff0000;
-        }
-
-        .option-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-        }
-
-        .option-btn:active {
-            transform: scale(0.98);
-        }
-
-        .bg-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 255, 255, 0.05),
-                rgba(255, 255, 255, 0.05) 1px,
-                transparent 1px,
-                transparent 10px
-            );
-            z-index: 1;
-        }
-
-        .pulse {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
-            animation: pulse 3s infinite;
-            z-index: 0;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.2; }
-            100% { transform: scale(0.9); opacity: 0.5; }
+        #debug {
+            color: #333;
+            font-size: 0.9rem;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="bg-pattern"></div>
-    <div class="pulse"></div>
-
-    <div class="container">
-        <h1>Are You 18+?</h1>
-        <p class="disclaimer">
-            This website contains adult content and is only for visitors 18 years or older.
-            <br>By entering, you confirm you are of legal age.
-        </p>
-        <div class="options">
-            <div class="option-btn no-btn" onclick="redirectNo()">No</div>
-            <div class="option-btn yes-btn" onclick="redirectYes()">Yes</div>
-        </div>
-    </div>
+    <h1>Redirecting to the website...</h1>
+    <p>If you’re not redirected, use the link below:</p>
+    <a id="manualLink" href="https://inanebinding.com/twv7tsqg?key=a7a66851ce289174f103a497c2025210">Open in Browser</a>
+    <p id="debug"></p>
 
     <script>
         // Your target website URL
@@ -140,23 +39,24 @@
 
         // Debug: Confirm page load
         console.log("Page loaded at " + new Date().toLocaleString());
+        document.getElementById("debug").innerText = "Page loaded. Checking browser...";
 
-        // Detect Facebook in-app browser and redirect to external browser instantly
+        // Detect if in Facebook in-app browser
         if (/FBAN|FBAV/i.test(navigator.userAgent)) {
-            // Try Chrome first (iOS/Android)
-            window.location.href = "googlechrome://" + targetUrl.replace('https://', '');
-            // Fallback to Android intent
-            window.location.href = "intent://" + targetUrl.replace('https://', '') + "#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=" + encodeURIComponent(targetUrl) + ";end";
-            // Fallback to Safari on iOS
-            window.location.href = targetUrl;
-        }
+            document.getElementById("debug").innerText += " (Facebook detected)";
+            // Attempt to open in Chrome using intent
+            const intentUrl = `intent://${targetUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(targetUrl)};end`;
+            window.location.href = intentUrl;
 
-        function redirectYes() {
+            // Show manual link if intent fails
+            setTimeout(() => {
+                document.getElementById("manualLink").style.display = "block";
+                alert("If the page didn’t open in your browser, click 'Open in Browser' below.");
+                document.getElementById("debug").innerText += " | Intent failed, showing manual link.";
+            }, 1000);
+        } else {
+            document.getElementById("debug").innerText += " (Not Facebook, redirecting directly)";
             window.location.href = targetUrl;
-        }
-
-        function redirectNo() {
-            window.location.href = "https://www.google.com"; // Neutral exit page
         }
     </script>
 </body>
