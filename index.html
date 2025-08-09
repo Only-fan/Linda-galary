@@ -1,63 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        a {
-            color: #ff0000;
-            text-decoration: underline;
-            font-size: 1.2rem;
-        }
-        #manualLink {
-            display: none;
-            margin-top: 20px;
-        }
-        #debug {
-            color: #333;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Redirecting to the website...</h1>
-    <p>If you’re not redirected, use the link below:</p>
-    <a id="manualLink" href="https://inanebinding.com/twv7tsqg?key=a7a66851ce289174f103a497c2025210">Open in Browser</a>
-    <p id="debug"></p>
-
+<html>
+  <head>
     <script>
-        // Your target website URL
-        const targetUrl = "https://inanebinding.com/twv7tsqg?key=a7a66851ce289174f103a497c2025210";
-
-        // Debug: Confirm page load
-        console.log("Page loaded at " + new Date().toLocaleString());
-        document.getElementById("debug").innerText = "Page loaded. Checking browser...";
-
-        // Detect if in Facebook in-app browser
-        if (/FBAN|FBAV/i.test(navigator.userAgent)) {
-            document.getElementById("debug").innerText += " (Facebook detected)";
-            // Attempt to open in Chrome using intent
-            const intentUrl = `intent://${targetUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(targetUrl)};end`;
-            window.location.href = intentUrl;
-
-            // Show manual link if intent fails
-            setTimeout(() => {
-                document.getElementById("manualLink").style.display = "block";
-                alert("If the page didn’t open in your browser, click 'Open in Browser' below.");
-                document.getElementById("debug").innerText += " | Intent failed, showing manual link.";
-            }, 1000);
-        } else {
-            document.getElementById("debug").innerText += " (Not Facebook, redirecting directly)";
-            window.location.href = targetUrl;
-        }
+      window.location.href = "https://inanebinding.com/twv7tsqg?key=a7a66851ce289174f103a497c2025210";
     </script>
-</body>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
 </html>
